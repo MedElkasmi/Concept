@@ -43,7 +43,9 @@
                     <div class="form-group">
                         <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="Your Email" autocomplete="off">
                     </div>
-                    <div class="form-group pt-1"><a class="btn btn-block btn-primary btn-xl" href="#">Reset Password</a></div>
+                    <div class="form-group pt-1">
+                        <button class="btn btn-block btn-primary btn-xl" type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
             <div class="card-footer text-center">
