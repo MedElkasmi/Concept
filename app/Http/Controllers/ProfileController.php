@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -17,9 +18,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
+        
         return view('admin.profile.edit', [
             'user' => $request->user(),
         ]);
+
+
     }
 
     /**
@@ -64,4 +68,28 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+
+    public function store(Request $request) {
+
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        if($request->file('profile_name')) {
+
+           $file = $request->file('profile_name');
+           
+           $filename = date('YmdHi').$file->getClientOriginalName();
+           $file->move(public_path('upload/admin_images'),$filename);
+           $data['profile_image'] = $filename;
+        }
+
+        $data->save();
+
+        return redirect()->route('profile.edit');
+
+
+    }
+
+
 }
