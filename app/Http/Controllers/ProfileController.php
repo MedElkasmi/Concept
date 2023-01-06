@@ -86,10 +86,11 @@ class ProfileController extends Controller
 
         $data->save();
 
-        return redirect()->route('profile.edit');
+        $notification = array(
+            'message' => 'Admin Profile Image Updated',
+            'alert-type' => 'success'
+        );
 
-
+        return redirect()->route('profile.edit')->with($notification);
     }
-
-
 }
