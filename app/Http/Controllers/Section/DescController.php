@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Section;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Section\Description;
+use App\Models\Section\About;
+use Illuminate\Support\Str;
 
 class DescController extends Controller
 {
@@ -16,9 +18,11 @@ class DescController extends Controller
     public function index()
     {
         $data = Description::find(1);
+        $data2 = About::find(1);
 
         return view('frontend.index', [
             'data' => $data,
+            'data2' => $data2,
         ]);
 
     }
@@ -41,22 +45,7 @@ class DescController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        if($request->file('background_image')) {
-
-            $file = $request->file('background_image');
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/Section/Descriptions'),$filename);
-
-            Description::create([
-
-                'title_text' => $request->title_text,
-                'title_button' => $request->title_button,
-                'paragraph' => $request->paragraph,
-                'background_image' => $filename,
-    
-            ]);
-         }
+        
     }
 
     /**
@@ -74,7 +63,7 @@ class DescController extends Controller
         if($request->file('background_image')) {
 
             $file = $request->file('background_image');
-            $filename = date('YmdHi').$file->getClientOriginalName();
+            $filename = str::random(12).$file->getClientOriginalName();
             $file->move(public_path('upload/Section/Descriptions'),$filename);
 
             $data->title_text = $request->title_text;
@@ -83,6 +72,14 @@ class DescController extends Controller
             $data->background_image = $filename;
 
             $data->save();
+
+
+            $notification = array(
+                'message' => 'Description Section has been Updated',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->route('admin.section')->with($notification);
     
          }
     }

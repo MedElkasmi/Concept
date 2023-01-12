@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('title_span_clients');
-            $table->string('title_span_projects');
-            $table->string('title_span_years');
-            $table->string('title_span_awards');
-            $table->string('video_background');
-            $table->string('desc_title');
-            $table->string('paragraph');
+            $table->string('title_span_clients')->nullable();
+            $table->string('title_span_projects')->nullable();
+            $table->string('title_span_years')->nullable();
+            $table->string('title_span_awards')->nullable();
+            $table->string('video_background')->nullable();
+            $table->string('desc_title')->nullable();
+            $table->string('paragraph')->nullable();
             $table->timestamps();
         });
     }

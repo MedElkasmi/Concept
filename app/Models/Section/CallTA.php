@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CallTA extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

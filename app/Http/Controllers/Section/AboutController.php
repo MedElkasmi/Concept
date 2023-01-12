@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Section;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Section\About;
 
 class AboutController extends Controller
 {
@@ -14,7 +15,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +25,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -67,9 +68,27 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $data = About::find(1);
+
+        $data->title_span_clients = $request->title_span_clients;
+        $data->title_span_projects = $request->title_span_projects;
+        $data->title_span_years = $request->title_span_years;
+        $data->title_span_awards = $request->title_span_awards;
+        $data->video_background = $request->video_background;
+        $data->desc_title = $request->desc_title;
+        $data->paragraph = $request->paragraph;
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'About Section has been Updated',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.section')->with($notification);
     }
 
     /**

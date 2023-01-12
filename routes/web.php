@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Section\DescController;
+use App\Http\Controllers\Section\AboutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/section', function () {
+    return view('admin.section');
+})->name('admin.section');
+
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -27,9 +33,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(DescController::class)->group(function () {
-    Route::get('/section', 'create')->name('section.create');
     Route::get('/', 'index');
-    Route::post('/section', 'update')->name('section.store');
+    Route::post('/section/desc', 'update')->name('desc.store');
+});
+
+Route::controller(AboutController::class)->group(function () {
+    Route::post('/section/about', 'update')->name('about.store');
 });
 
 

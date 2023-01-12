@@ -18,7 +18,7 @@
       <div class="card">
          <h5 class="card-header">Edit description</h5>
          <div class="card-body">
-            <form method="POST" action="{{ route('section.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('desc.store') }}" enctype="multipart/form-data">
                @csrf
                @method('POST')
 
@@ -51,38 +51,41 @@
       <div class="card">
          <h5 class="card-header">Edit Spans</h5>
          <div class="card-body">
-            <form>
+            <form method="POST" action="{{ route('about.store') }}">
+               @csrf
+               @method('POST')
+
                <div class="form-group">
                   <label for="inputText3" class="col-form-label">Title : Happy clients</label>
-                  <input id="inputText3" type="text" class="form-control">
+                  <input id="inputText3" type="text" class="form-control" name="title_span_clients">
                </div>
                <div class="form-group">
                 <label for="inputText3" class="col-form-label">Title : Projects</label>
-                <input id="inputText3" type="text" class="form-control">
+                <input id="inputText3" type="text" class="form-control" name="title_span_projects">
              </div>
              <div class="form-group">
                 <label for="inputText3" class="col-form-label">Title : Years of experience</label>
-                <input id="inputText3" type="text" class="form-control">
+                <input id="inputText3" type="text" class="form-control" name="title_span_years">
              </div>
              <div class="form-group">
                 <label for="inputText3" class="col-form-label">Title : Awards</label>
-                <input id="inputText3" type="text" class="form-control">
+                <input id="inputText3" type="text" class="form-control" name="title_span_awards">
              </div>
              <div class="form-group">
                 <label for="inputText3" class="col-form-label">Url Video link :</label>
-                <input id="inputText3" type="text" class="form-control">
+                <input id="inputText3" type="text" class="form-control" name="video_background">
              </div>
 
              <div class="form-group">
                 <label for="inputText3" class="col-form-label">Description title :</label>
-                <input id="inputText3" type="text" class="form-control">
+                <input id="inputText3" type="text" class="form-control" name="desc_title">
              </div>
              <div class="form-group">
                 <label for="exampleFormControlTextarea1">Paragraph Text description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="paragraph"></textarea>
              </div>
 
-               <button class="btn btn-rounded btn-primary">Save</button>
+               <button class="btn btn-rounded btn-primary" type="submit">Save</button>
             </form>
          </div>
       </div>
@@ -95,7 +98,10 @@
     <div class="card">
        <h5 class="card-header">Edit Call To Action</h5>
        <div class="card-body">
-          <form>
+         <form method="POST" action="">
+            @csrf
+            @method('POST')
+
              <div class="form-group">
                 <label for="inputText3" class="col-form-label">Main Title :</label>
                 <input id="inputText3" type="text" class="form-control">
@@ -117,7 +123,10 @@
     <div class="card">
        <h5 class="card-header">Edit Our Services</h5>
        <div class="card-body">
-          <form>
+            <form method="POST" action="">
+               @csrf
+               @method('POST')
+
              <div class="form-group">
                 <label for="inputText3" class="col-form-label">Main Title :</label>
                 <input id="inputText3" type="text" class="form-control">

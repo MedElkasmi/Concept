@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('call_t_a_s', function (Blueprint $table) {
             $table->id();
-            $table->string('main_title');
-            $table->string('desc_paragraph');
+            $table->string('main_title')->nullable();
+            $table->string('desc_paragraph')->nullable();
             $table->timestamps();
         });
     }
