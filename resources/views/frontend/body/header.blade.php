@@ -10,12 +10,12 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a class="active" href="index.html">{{ $menu->main_page}}</a></li>
+          <li><a href="services.html">{{ $menu->second_page}}</a></li>
+          <li><a href="pricing.html">{{ $menu->thrid_page}}</a></li>
+          <li><a href="portfolio.html">{{ $menu->fourth_page}}</a></li>
+          <li><a href="blog.html">{{ $menu->fifth_page}}</a></li>
+          <li><a href="contact.html">{{ $menu->sixth_page}}</a></li>
 
           <li><a class="getstarted" href="">Get Started</a></li>
         </ul>

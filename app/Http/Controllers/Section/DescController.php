@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Section;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Section\Description;
-use App\Models\Section\About;
 use Illuminate\Support\Str;
 
 class DescController extends Controller
@@ -17,13 +16,6 @@ class DescController extends Controller
      */
     public function index()
     {
-        $data = Description::find(1);
-        $data2 = About::find(1);
-
-        return view('frontend.index', [
-            'data' => $data,
-            'data2' => $data2,
-        ]);
 
     }
 

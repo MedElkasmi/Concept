@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Section\DescController;
 use App\Http\Controllers\Section\AboutController;
+use App\Http\Controllers\Section\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(DescController::class)->group(function () {
+Route::controller(MenuController::class)->group(function () {
+    Route::post('/section/menu', 'update')->name('menu.store');;
+});
+
+Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'index');
+});
+
+Route::controller(DescController::class)->group(function () {
     Route::post('/section/desc', 'update')->name('desc.store');
 });
 
