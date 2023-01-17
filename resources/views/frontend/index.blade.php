@@ -8,9 +8,6 @@
    <!-- ======= About Section ======= -->
     @include('frontend.section.about')
    <!-- End About Section -->
-   <!-- ======= Cta Section ======= -->
-    @include('frontend.section.cta')
-   <!-- End Cta Section -->
    <!-- ======= Services Section ======= -->
     @include('frontend.section.services')
    <!-- End Services Section -->

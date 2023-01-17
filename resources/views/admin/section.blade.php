@@ -129,18 +129,18 @@
       <div class="card">
          <h5 class="card-header">Edit Our Services</h5>
          <div class="card-body">
-            <form method="POST" action="">
+            <form method="POST" action="{{route('service.store')}}">
                @csrf
                @method('POST')
                <div class="form-group">
                   <label for="inputText3" class="col-form-label">Main Title :</label>
-                  <input id="inputText3" type="text" class="form-control">
+                  <input id="inputText3" type="text" class="form-control" name="main_title">
                </div>
                <div class="form-group">
                   <label for="exampleFormControlTextarea1">Paragraph Text description</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc_paragraph"></textarea>
                </div>
-               <button class="btn btn-rounded btn-primary">Save</button>
+               <button class="btn btn-rounded btn-primary" type="submit">Save</button>
             </form>
          </div>
       </div>

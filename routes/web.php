@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Section\DescController;
 use App\Http\Controllers\Section\AboutController;
 use App\Http\Controllers\Section\MenuController;
+use App\Http\Controllers\Section\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,10 @@ Route::controller(DescController::class)->group(function () {
 
 Route::controller(AboutController::class)->group(function () {
     Route::post('/section/about', 'update')->name('about.store');
+});
+
+Route::controller(ServiceController::class)->group(function () {
+    Route::post('/section/service', 'store')->name('service.store');
 });
 
 

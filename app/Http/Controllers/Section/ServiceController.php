@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Section;
 
 use App\Http\Controllers\Controller;
+use App\Models\Section\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -36,6 +37,19 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
+        $data = new Service;
+
+        $data->main_title = $request->main_title;
+        $data->desc_paragraph = $request->desc_paragraph;
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'Service has been Created',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.section')->with($notification);
     }
 
     /**
@@ -78,8 +92,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        
     }
 }
