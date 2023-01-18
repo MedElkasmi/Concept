@@ -6,6 +6,7 @@ use App\Http\Controllers\Section\DescController;
 use App\Http\Controllers\Section\AboutController;
 use App\Http\Controllers\Section\MenuController;
 use App\Http\Controllers\Section\ServiceController;
+use App\Http\Controllers\blog\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,8 @@ Route::controller(AboutController::class)->group(function () {
 Route::controller(ServiceController::class)->group(function () {
     Route::post('/section/service', 'store')->name('service.store');
 });
+
+Route::resource('category', CategoryController::class);
 
 
 
