@@ -14,6 +14,17 @@ class MenuController extends Controller
 
         $data = Menu::find(1);
 
+        $data = $request->validate([
+            
+            'main_page' => 'required',
+            'second_page' => 'required',
+            'third_page' => 'required',
+            'fourth_page' => 'required',
+            'fifth_page' => 'required',
+            'sixth_page' => 'required',
+
+        ]);
+
         $data->main_page = $request->main_page;
         $data->second_page = $request->second_page;
         $data->third_page = $request->third_page;

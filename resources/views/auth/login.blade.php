@@ -39,6 +39,15 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ $error }}
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                            </div>
+                        @endforeach
+                    @endif
+
                     <div class="form-group">
                         <input class="form-control form-control-lg" id="email" type="email" name="email" placeholder="email" autocomplete="off">
                     </div>

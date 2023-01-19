@@ -9,13 +9,12 @@
          <div class="row">
             <div class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-3 col-md-12 col-sm-12 col-12 p-4">
                @if ($errors->any())
-               <div class="alert alert-danger">
-                  <ul>
                      @foreach ($errors->all() as $error)
-                     <li>{{ $error }}</li>
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ $error }}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                    </div>
                      @endforeach
-                  </ul>
-               </div>
                @endif
                <div class="form-group">
                   <label>New Category</label>
@@ -48,8 +47,12 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->blog_category }}</td>
                         <td width="25%" style="text-align: center;">
-                            <a href="#" class="btn btn-success">Success</a>
-                            <a href="#" class="btn btn-danger">Danger</a>
+
+                            <form method="POST" action="{{route('category.destroy',$category)}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

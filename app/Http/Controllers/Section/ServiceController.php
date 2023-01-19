@@ -39,6 +39,13 @@ class ServiceController extends Controller
         //
         $data = new Service;
 
+        $data = $request->validate([
+            
+            'main_title' => 'required',
+            'desc_paragraph' => 'required',
+
+        ]);
+
         $data->main_title = $request->main_title;
         $data->desc_paragraph = $request->desc_paragraph;
 

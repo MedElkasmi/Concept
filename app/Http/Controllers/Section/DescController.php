@@ -50,7 +50,18 @@ class DescController extends Controller
     public function update(Request $request)
     {
         //
+
+
         $data = Description::find(1);
+
+        $data = $request->validate([
+            
+            'title_text' => 'required|unique:descriptions,title_text',
+            'title_button' => 'required|unique:descriptions,title_button',
+            'paragraph' => 'required',
+            'background_image' => 'required|unique:descriptions,background_image',
+
+        ]);
 
         if($request->file('background_image')) {
 

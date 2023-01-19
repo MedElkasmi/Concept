@@ -73,6 +73,18 @@ class AboutController extends Controller
 
         $data = About::find(1);
 
+        $data = $request->validate([
+            
+            'title_span_clients' => 'required',
+            'title_span_projects' => 'required',
+            'title_span_years' => 'required',
+            'title_span_awards' => 'required',
+            'video_background' => 'required',
+            'desc_title' => 'required',
+            'paragraph' => 'required',
+
+        ]);
+
         $data->title_span_clients = $request->title_span_clients;
         $data->title_span_projects = $request->title_span_projects;
         $data->title_span_years = $request->title_span_years;

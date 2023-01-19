@@ -40,6 +40,15 @@
                     @csrf
 
                     <p>Don't worry, we'll send you an email to reset your password.</p>
+
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ $error }}
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                            </div>
+                        @endforeach
+                    @endif
                     <div class="form-group">
                         <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="Your Email" autocomplete="off">
                     </div>

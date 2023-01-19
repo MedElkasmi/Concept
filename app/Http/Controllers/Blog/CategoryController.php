@@ -16,6 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories = Category::all();
+
+        return view('admin.blog.category', ['categories' => $categories]);
 
     }
 
@@ -26,9 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
 
-        return view('admin.blog.category', ['categories' => $categories]);
     }
 
     /**
@@ -40,7 +41,10 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->validate(['blog_category' => 'required']);
+        $data = $request->validate([
+            
+            'blog_category' => 'required|unique:categories,blog_category',
+        ]);
 
         $data = new Category;
 
@@ -52,7 +56,7 @@ class CategoryController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('category.create')->with($notification);
+        return redirect()->route('category.index')->with($notification);
     }
 
     /**
@@ -95,8 +99,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
+        $category->delete();
+
+        
+        $notification = array(
+            'message' => 'Selected Category has been Removed',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('category.index')->with($notification);
+        
     }
 }

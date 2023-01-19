@@ -15,7 +15,7 @@
                         <div id="Section" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('admin.section')}}">Edit Section <span class="badge badge-secondary">New</span></a>
+                                    <a class="nav-link" href="{{route('admin.section')}}">Edit Sections <span class="badge badge-secondary">New</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -26,10 +26,7 @@
                         <div id="blog" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('category.create')}}">Add Category <span class="badge badge-secondary">New</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="">List Categories <span class="badge badge-secondary">New</span></a>
+                                    <a class="nav-link" href="{{route('category.index')}}">List Categories <span class="badge badge-secondary">New</span></a>
                                 </li>
                             </ul>
                         </div>
