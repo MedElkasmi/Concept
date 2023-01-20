@@ -10,12 +10,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="index.html">{{ $menu->main_page}}</a></li>
-          <li><a href="services.html">{{ $menu->second_page}}</a></li>
-          <li><a href="pricing.html">{{ $menu->thrid_page}}</a></li>
-          <li><a href="portfolio.html">{{ $menu->fourth_page}}</a></li>
-          <li><a href="blog.html">{{ $menu->fifth_page}}</a></li>
-          <li><a href="contact.html">{{ $menu->sixth_page}}</a></li>
+          <li><a class="active" href="">Home</a></li>
+          <li><a href="{{route('post.index')}}">Blog</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Service</a></li>
+          <li><a href="">Contact</a></li>
 
           <li><a class="getstarted" href="">Get Started</a></li>
         </ul>

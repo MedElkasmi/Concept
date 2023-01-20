@@ -18,6 +18,8 @@
       <link rel="stylesheet" href="{{ asset('backend/assets/vendor/datatables/css/buttons.bootstrap4.css')}}">
       <link rel="stylesheet" href="{{ asset('backend/assets/vendor/datatables/css/select.bootstrap4.css')}}">
       <link rel="stylesheet" href="{{ asset('backend/assets/vendor/datatables/css/fixedHeader.bootstrap4.css')}}">
+      <link rel="stylesheet" href="{{ asset('backend/assets/vendor/select2/css/select2.css')}}">
+      <link rel="stylesheet" href="{{ asset('backend/assets/vendor/summernote/css/summernote-bs4.css')}}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
       <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
    </head>
@@ -88,6 +90,10 @@
       <script src="{{ asset('backend/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
       <script src="{{ asset('backend/assets/libs/js/dashboard-ecommerce.js')}}"></script>
 
+      <!-- mailbox refer to add post -->
+      <script src="{{ asset('backend/assets/vendor/select2/js/select2.min.js')}}"></script>
+      <script src="{{ asset('backend/assets/vendor/summernote/js/summernote-bs4.js')}}"></script>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
       <script src="{{ asset('backend/assets/vendor/multi-select/js/jquery.multi-select.js')}}"></script>
@@ -122,6 +128,17 @@
            break; 
         }
         @endif 
+
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2({ tags: true });
+         });
+
+         $(document).ready(function() {
+         $('#summernote').summernote({
+               height: 300
+
+         });
+      });
        </script>
    </body>
 </html>

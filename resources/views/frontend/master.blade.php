@@ -31,8 +31,13 @@
    </head>
    <body>
 
+      @include('frontend.body.header')
+
     
       @yield('content')
+
+
+      @include('frontend.body.footer')
 
 
       <!-- Vendor JS Files -->

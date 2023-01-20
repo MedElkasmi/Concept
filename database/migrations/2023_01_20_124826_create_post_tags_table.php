@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('post_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('main_page')->nullable();
-            $table->string('second_page')->nullable();
-            $table->string('third_page')->nullable();
-            $table->string('fourth_page')->nullable();
-            $table->string('fifth_page')->nullable();
-            $table->string('sixth_page')->nullable();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('post_tags');
     }
 };

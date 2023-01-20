@@ -6,7 +6,8 @@ use App\Http\Controllers\Section\DescController;
 use App\Http\Controllers\Section\AboutController;
 use App\Http\Controllers\Section\MenuController;
 use App\Http\Controllers\Section\ServiceController;
-use App\Http\Controllers\blog\CategoryController;
+use App\Http\Controllers\Blog\CategoryController;
+use App\Http\Controllers\Blog\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/section', function () {
     return view('admin.section');
-})->name('admin.section');
+})->middleware('auth')->name('admin.section');
 
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(MenuController::class)->group(function () {
-    Route::post('/section/menu', 'update')->name('menu.store');;
+    Route::post('/section/menu', 'update')->name('menu.store');
 });
 
 Route::controller(IndexController::class)->group(function () {
@@ -55,7 +57,19 @@ Route::controller(ServiceController::class)->group(function () {
     Route::post('/section/service', 'store')->name('service.store');
 });
 
-Route::resource('category', CategoryController::class);
+Route::middleware('auth')->group(function () {
+
+    Route::resource('category', CategoryController::class);
+    
+});
+
+Route::middleware('auth')->group(function () {
+
+    Route::resource('post', PostController::class);
+
+});
+
+
 
 
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Section;
+namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class menu extends Model
+class Post_category extends Model
 {
     use HasFactory;
 
