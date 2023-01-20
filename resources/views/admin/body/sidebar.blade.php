@@ -29,6 +29,9 @@
                                     <a class="nav-link" href="{{route('category.index')}}">List Categories <span class="badge badge-secondary">New</span></a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{route('tag.index')}}">List Tags <span class="badge badge-secondary">New</span></a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{route('post.index')}}">List Posts <span class="badge badge-secondary">New</span></a>
                                 </li>
                                 <li class="nav-item">

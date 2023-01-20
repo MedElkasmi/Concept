@@ -43,12 +43,12 @@ class CategoryController extends Controller
 
         $data = $request->validate([
             
-            'blog_category' => 'required|unique:categories,blog_category',
+            'category_name' => 'required|unique:categories,category_name',
         ]);
 
         $data = new Category;
 
-        $data->blog_category = $request->blog_category;
+        $data->category_name = $request->category_name;
         $data->save();
 
         $notification = array(

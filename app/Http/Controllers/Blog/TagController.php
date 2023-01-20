@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
+use App\Http\Controllers\Controller;
 use App\Models\Blog\Tag;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view('admin.blog.tag', ['tags' => $tags]);
     }
 
     /**
@@ -36,6 +38,24 @@ class TagController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'tag_name' => 'required|unique:tags,tag_name',
+        ]);
+
+        $data = new tag;
+
+        $data->tag_name = $request->tag_name;
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'New Tag has been Added',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('tag.index')->with($notification);
+
+
     }
 
     /**
@@ -81,5 +101,12 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         //
+        $tag->delete();
+        $notification = array(
+            'message' => 'Selected Tag has been Removed',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('tag.index')->with($notification);
     }
 }

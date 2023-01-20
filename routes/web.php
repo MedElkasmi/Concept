@@ -8,6 +8,7 @@ use App\Http\Controllers\Section\MenuController;
 use App\Http\Controllers\Section\ServiceController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Blog\PostController;
+use App\Http\Controllers\Blog\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,13 +61,9 @@ Route::controller(ServiceController::class)->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::resource('category', CategoryController::class);
-    
-});
-
-Route::middleware('auth')->group(function () {
-
     Route::resource('post', PostController::class);
-
+    Route::resource('tag', TagController::class);
+    
 });
 
 

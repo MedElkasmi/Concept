@@ -1,9 +1,9 @@
 @extends('admin.admin_master')
 @section('dashboard-content')
 <div class="card">
-   <h5 class="card-header">Create New Category</h5>
+   <h5 class="card-header">Create New Tag</h5>
    <div class="card-body">
-      <form method="post" action="{{route('category.store')}}">
+      <form method="post" action="{{route('tag.store')}}">
          @csrf
          @method('post')
          <div class="row">
@@ -17,8 +17,8 @@
                      @endforeach
                @endif
                <div class="form-group">
-                  <label>New Category</label>
-                  <input type="text" class="form-control form-control-lg" name="category_name">
+                  <label>New Tag</label>
+                  <input type="text" class="form-control form-control-lg" name="tag_name">
                   <br>
                   <button type="submit" class="btn btn-primary float-right">Save</button>
                </div>
@@ -30,26 +30,26 @@
 
 
 <div class="card">
-    <h5 class="card-header">Categories</h5>
+    <h5 class="card-header">Tags</h5>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-striped table-bordered first">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Category Name</th>
+                        <th>Tag Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php $i=1; @endphp
-                @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $category->category_name }}</td>
-                        <td width="25%" style="text-align: center;">
 
-                            <form method="POST" action="{{route('category.destroy',$category)}}">
+                @php $i=1; @endphp
+                @foreach ($tags as $tag)
+                    <tr>
+                        <td>{{$i++}}</td>
+                        <td>{{$tag->tag_name}}</td>
+                        <td width="25%" style="text-align: center;">
+                            <form method="POST" action="{{route('tag.destroy',$tag)}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Remove</button>

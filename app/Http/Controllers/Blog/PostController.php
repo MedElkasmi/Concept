@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog\Post;
+use App\Models\Blog\Category;
+use App\Models\Blog\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -25,7 +27,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('admin.blog.add_post', [
+
+            'categories' => $categories,
+            'tags' => $tags,
+        ]);
     }
 
     /**

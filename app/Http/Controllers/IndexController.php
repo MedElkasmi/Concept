@@ -14,15 +14,33 @@ class IndexController extends Controller
     {
         $Desc = Description::find(1);
         $about = About::find(1);
-        $menu = Menu::find(1);
         $service = Service::all();
 
         return view('frontend.index', [
             'desc' => $Desc,
             'about' => $about,
-            'menu' => $menu,
             'service' => $service,
         ]);
 
     }
+
+    public function Fetch_About_Section() {
+
+        $about = About::find(1);
+        return view('frontend.index', ['about' => $about]);
+    }
+
+    public function Fetch_Desc_Section() {
+        
+        $desc = Description::find(1);
+        return view('frontend.index', ['desc' => $desc]);
+    }
+
+    public function Fetch_Service_Section() {
+        
+        $service = Service::find(1);
+        return view('frontend.index', ['service' => $service]);
+    }
+
+
 }
