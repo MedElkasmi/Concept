@@ -10,4 +10,5 @@ class Post_tag extends Model
     use HasFactory;
 
     protected $guarded = [];
+
 }
