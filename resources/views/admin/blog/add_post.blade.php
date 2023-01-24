@@ -21,9 +21,9 @@
                 <div class="form-group row pt-2">
                     <label class="col-md-1 control-label">Category :</label>
                     <div class="col-md-6">
-                        <select class="js-example-basic-multiple" multiple="multiple" name="category_name[]">
+                        <select class="js-example-basic-multiple" multiple="multiple" name="categories[]">
                             @foreach ($categories as $category)
-                                <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                                <option value="{{$category->id}}">{{$category->category_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -33,9 +33,9 @@
                 <div class="form-group row pt-2">
                     <label class="col-md-1 control-label">Tag :</label>
                     <div class="col-md-6">
-                        <select class="js-example-basic-multiple" multiple="multiple" name="tag_name[]">
+                        <select class="js-example-basic-multiple" multiple="multiple" name="tags[]">
                             @foreach ($tags as $tag)
-                                <option value="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
+                                <option value="{{$tag->id}}">{{$tag->tag_name}}</option>
                             @endforeach
                         </select>
                     </div>

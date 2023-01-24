@@ -46,7 +46,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             
             'title' => 'required',
@@ -64,19 +63,13 @@ class PostController extends Controller
             $data = new Post;
 
             $data->user_id = '';
-            $data->title = $request->title;
+            $data->title = $request->input('title');
             $data->img_url = $filename;
-            $data->content = $request->content;
+            $data->content = $request->input('content');
 
-            foreach ($request->input('category_name') as $categoryName) {
-                $category = Category::firstOrCreate(['category_name' => $categoryName]);
-                $data->categories()->attach($category->id);
-            }
-
-            dd($data);
-
-            // $data->save();
-            // $data->tags()->attach($request->input('tag_name'));
+            $data->save();
+            $data->categories()->sync($request->categories);
+            $data->tags()->sync($request->tags);
 
             $notification = array(
                 'message' => 'A Post Has been Created',

@@ -4,6 +4,7 @@ namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Blog\Post;
 
 class Category extends Model
 {
@@ -14,6 +15,6 @@ class Category extends Model
 
     public function posts(){
 
-        return $this->belongsToMany('App\Models\Blog\Post');
+        return $this->belongsToMany(Post::class);
     }
 }
