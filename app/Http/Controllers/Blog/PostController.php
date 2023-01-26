@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Blog\Post;
 use App\Models\Blog\Category;
 use App\Models\Blog\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -18,7 +20,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.blog.posts');
+        $user = User::find(Auth::id());
+        $posts = $user->posts;
+
+        return view('admin.blog.posts', [
+
+            'posts' => $posts,
+        ]);
     }
 
     /**
@@ -57,15 +65,15 @@ class PostController extends Controller
         if($request->file('img_url')) {
 
             $file = $request->file('img_url');
-            $filename = str::random(12).$file->getClientOriginalName();
+            $filename = str::random(20).'_'.$file->getClientOriginalName();
             $file->move(public_path('upload/Blog'),$filename);
 
             $data = new Post;
 
-            $data->user_id = '';
+            $data->user_id = Auth::id();
             $data->title = $request->input('title');
             $data->img_url = $filename;
-            $data->content = $request->input('content');
+            $data->content = strip_tags($request->input('content'));
 
             $data->save();
             $data->categories()->sync($request->categories);

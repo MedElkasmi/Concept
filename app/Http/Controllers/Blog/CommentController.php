@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog\Comment;
+use App\Models\Blog\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -37,6 +38,15 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data = new Comment;
+
+        $data->post_id = $request->input('id');
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->content= $request->input('content');
+
+        $data->save();
     }
 
     /**

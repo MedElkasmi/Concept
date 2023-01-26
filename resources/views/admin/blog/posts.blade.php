@@ -2,7 +2,7 @@
 @section('dashboard-content')
 
 <div class="card">
-    <h5 class="card-header">Posts</h5>
+    <h5 class="card-header">Posts Created For Each User : </h5>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-striped table-bordered first">
@@ -15,9 +15,12 @@
                 </thead>
                 <tbody>
 
+                @php $i=1; @endphp
+                @foreach ($posts as $post)
+
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $i++ }}</td>
+                        <td>{{$post->title}}</td>
                         <td width="25%" style="text-align: center;">
 
                             <form method="POST" action="">
@@ -27,6 +30,8 @@
                             </form>
                         </td>
                     </tr>
+                    
+                @endforeach
 
                 </tbody>
             </table>

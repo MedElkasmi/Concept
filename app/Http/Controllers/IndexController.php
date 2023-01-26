@@ -7,6 +7,11 @@ use App\Models\Section\Description;
 use App\Models\Section\About;
 use App\Models\Section\Menu;
 use App\Models\Section\Service;
+use App\Models\Blog\Post;
+use App\Models\Blog\Comment;
+use App\Models\User;
+use App\Models\Blog\Category;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -24,23 +29,32 @@ class IndexController extends Controller
 
     }
 
-    public function Fetch_About_Section() {
+    public function blog() {
 
-        $about = About::find(1);
-        return view('frontend.index', ['about' => $about]);
+        // $posts = post::all();
+        // $categories = $posts->categories;
+
+        $posts = post::with('categories')->get();
+
+        return view('frontend.blog.blogs', [
+
+            'posts' => $posts,
+        ]);
+
     }
 
-    public function Fetch_Desc_Section() {
-        
-        $desc = Description::find(1);
-        return view('frontend.index', ['desc' => $desc]);
+    public function SingleBlog($id) {
+
+        $post = Post::findOrFail($id);
+        $comments = $post->comments()->count();
+
+        return view('frontend.blog.blog_single',[
+            'post' => $post,
+            'comments' => $comments
+        ]);
+
     }
 
-    public function Fetch_Service_Section() {
-        
-        $service = Service::find(1);
-        return view('frontend.index', ['service' => $service]);
-    }
 
 
 }

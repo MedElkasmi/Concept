@@ -13,5 +13,5 @@
    <!-- End Services Section -->
 </main>
 <!-- End #main -->
-@include('frontend.body.footer')
+
 @endsection

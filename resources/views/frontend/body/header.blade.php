@@ -11,7 +11,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="active" href="">Home</a></li>
-          <li><a href="{{route('post.index')}}">Blog</a></li>
+          <li><a href="{{route('all.blogs')}}">Blog</a></li>
           <li><a href="">About</a></li>
           <li><a href="">Service</a></li>
           <li><a href="">Contact</a></li>
