@@ -38,7 +38,7 @@
                                     <a class="nav-link" href="{{route('tag.index')}}">List Tags <span class="badge badge-secondary">New</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">List Comments <span class="badge badge-secondary">New</span></a>
+                                    <a class="nav-link" href="{{route('comment.index')}}">List Comments <span class="badge badge-secondary">New</span></a>
                                 </li>
                             </ul>
                         </div>

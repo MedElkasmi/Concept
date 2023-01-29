@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog\Comment;
 use App\Models\Blog\Post;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -17,6 +18,9 @@ class CommentController extends Controller
     public function index()
     {
         //
+        $comments = Comment::all();
+
+        return view('admin.blog.comments', ['comments' => $comments]);
     }
 
     /**
@@ -92,5 +96,14 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+        $comment->delete();
+
+        
+        $notification = array(
+            'message' => 'Comment has been Removed',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('comment.index')->with($notification);
     }
 }
