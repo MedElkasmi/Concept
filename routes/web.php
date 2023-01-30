@@ -9,6 +9,7 @@ use App\Http\Controllers\Section\ServiceController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\Blog\TagController;
+use App\Http\Controllers\Blog\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,8 @@ Route::controller(MenuController::class)->group(function () {
 
 Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'index');
+    Route::get('/blog', 'blog')->name('all.blogs');;
+    Route::get('/blog/{id}', 'SingleBlog')->name('single.blog');
 });
 
 Route::controller(DescController::class)->group(function () {
@@ -65,6 +68,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('tag', TagController::class);
     
 });
+
+
+Route::resource('comment', CommentController::class);
 
 
 
